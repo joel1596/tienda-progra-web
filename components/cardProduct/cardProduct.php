@@ -1,5 +1,5 @@
 <link rel="stylesheet" type="text/css" href="components/cardProduct/card.css">
-
+<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 <?php
 include 'DAL/products.php';
 $products = getAllProducts();
@@ -19,8 +19,8 @@ if ($products->num_rows > 0) {
         echo  "      <div class='cvp'>";
         echo  "          <h5 class='card-title font-weight-bold'>{$row['name']}</h5>";
         echo  "      <p class='card-text'>$  {$row['price']}</p>";
-        echo  "       <a href='#' class='btn details px-auto' style='background-color: #42465A; color: white;'>view details</a><br />";
-        echo  "        <a href='#' class='btn cart px-auto'>ADD TO CART</a>";
+        echo  "       <button class='btn details px-auto' style='background-color: #42465A; color: white;'>view details</button><br />";
+        echo  "        <button class='add-to-cart' data-id='1'>ADD TO CART</button>";
         echo  "     </div>";
         echo  "  </div>";
         echo "  </div>";
@@ -36,17 +36,4 @@ echo "</div>";
 
 ?>
 
-<!-- <div class='container-fluid'>
-    <div class="card mx-auto col-md-3 col-10 mt-5">
-        <img class='mx-auto img-thumbnail' src="https://i.imgur.com/pjITBzX.jpg" width="auto" height="auto" />
-        <div class="card-body text-center mx-auto">
-            <div class='cvp'>
-                <h5 class="card-title font-weight-bold">Yail wrist watch</h5>
-                <p class="card-text">$299</p>
-                <a href="#" class="btn details px-auto">view details</a><br />
-                <a href="#" class="btn cart px-auto">ADD TO CART</a>
-            </div>
-        </div>
-    </div>
-
-</div> -->
+<script src="components/cardProduct/card.js"></script>
