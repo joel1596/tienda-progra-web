@@ -1,8 +1,25 @@
 <link rel="stylesheet" type="text/css" href="components/cardProduct/card.css">
 <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 <?php
-include 'DAL/products.php';
+require_once 'DAL/products.php';
+require_once 'DAL/cart.php';
+
 $products = getAllProducts();
+
+if (!isset($_SESSION['user'])) {
+    $_SESSION['user'] = 1;
+    $user_id = $_SESSION['user'];
+} else {
+    $user_id = $_SESSION['user'];
+}
+
+if (!isset($_SESSION['cart'])) {
+    $cart_id = createCart($user_id);
+} else {
+    $cart_id = $_SESSION['cart'];
+}
+
+$cart_id = $cart_id['cart_id'];
 
 echo "<div class='container-fluid'>";
 
@@ -20,7 +37,7 @@ if ($products->num_rows > 0) {
         echo  "          <h5 class='card-title font-weight-bold'>{$row['name']}</h5>";
         echo  "      <p class='card-text'>$  {$row['price']}</p>";
         echo  "       <button class='btn details px-auto' style='background-color: #42465A; color: white;'>view details</button><br />";
-        echo  "        <button class='add-to-cart' data-id='1'>ADD TO CART</button>";
+        echo  "        <button class='btn cart px-auto' data-id='$cart_id'>ADD TO CART</button>";
         echo  "     </div>";
         echo  "  </div>";
         echo "  </div>";

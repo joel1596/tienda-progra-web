@@ -4,6 +4,7 @@
 //Carts structure: cart_id, user_id
 //require '../models/cart.model.php';
 require 'connection.php';
+require 'cart_item.php';
 /**
  * It inserts a new row into the cart_items table.
  * 
@@ -17,13 +18,14 @@ function addToCart($cart_id, $product_id, $quantity)
 {
     $response = false;
     $connection = Conecta();
-    $new_quantity = $quantity + 1;
 
     if ($connection) {
-        $query = "UPDATE cart_items SET quantity='$new_quantity' WHERE cart_id='$cart_id' AND product_id='$product_id'";
-        $connection->query($query);
+        if (!updateItem($cart_id, $product_id, $quantity, $connection)) {
+            $response = createItem($cart_id, $product_id, $quantity, $connection);
+            $response = updateItem($cart_id, $product_id, $quantity, $connection);
+        }
     } else {
-        echo "Error: ";
+        print("Error: ");
     }
 
     return $response;
@@ -42,9 +44,37 @@ function createCart($user_id)
 {
     $response = false;
     $connection = Conecta();
-    //$newCart = new ShoppingCart($user_id);
 
     $response = $connection->query("insert into carts (user_id) values ($user_id)");
+
+    if ($response) {
+        $response = getCartId($user_id, $connection->insert_id);
+        $_SESSION['cart'] = $response;
+    }
+
+    return $response;
+
+    Desconecta($connection);
+}
+
+/**
+ * It gets the cart id of a user.
+ * 
+ * @param user_id The user's id
+ * @param cart_id The user's id
+ * 
+ * @return The result of the query.
+ */
+function getCartId($user_id, $cart_id)
+{
+    $response = false;
+    $connection = Conecta();
+
+    $response = $connection->query("select cart_id from carts where user_id = '$user_id' and cart_id = '$cart_id'");
+
+    if ($response->num_rows > 0) {
+        $response = $response->fetch_assoc();
+    }
 
     return $response;
 
