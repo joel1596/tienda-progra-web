@@ -6,9 +6,8 @@
         <div class="container-fluid">
             <ul class="navbar-nav d-none d-md-flex mr-auto">
                 <li class="nav-item"><a class="nav-link" href="index.php" data-abc="true">Inicio</a></li>
-                <li class="nav-item"><a class="nav-link" href="products.php" data-abc="true">Categorias</a></li>
                 <li class="nav-item"><a class="nav-link" href="products.php" data-abc="true">Productos</a></li>
-                <li class="nav-item"><a class="nav-link" href="products.php" data-abc="true">Contactenos</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" data-abc="true">Contactenos</a></li>
             </ul>
             <ul class="navbar-nav d-flex align-items-center">
                 <li class="nav-item">
@@ -33,7 +32,7 @@
                 </div>
                 <div class="col-md-8">
                     <div class="d-flex form-inputs">
-                        <input class="form-control" type="text" placeholder="Search any product...">
+                        <input class="form-control" type="text" placeholder="Busca cualquier producto...">
                         <i class="bx bx-search"></i>
                     </div>
                 </div>
@@ -42,7 +41,7 @@
                     <div class="d-flex d-none d-md-flex flex-row align-items-center">
                         <span class="shop-bag"><i class='bx bxs-shopping-bag'></i></span>
                         <div class="d-flex flex-column ms-2">
-                            <span class="qty">1 Product</span>
+                            <span class="qty">1 Producto</span>
                             <span class="fw-bold">$27.90</span>
                         </div>
                     </div>

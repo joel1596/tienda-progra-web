@@ -36,8 +36,8 @@ if ($products->num_rows > 0) {
         echo  "      <div class='cvp'>";
         echo  "          <h5 class='card-title font-weight-bold'>{$row['name']}</h5>";
         echo  "      <p class='card-text'>$  {$row['price']}</p>";
-        echo  "       <button class='btn details px-auto' style='background-color: #42465A; color: white;'>view details</button><br />";
-        echo  "        <button class='btn cart px-auto' data-id='$cart_id'>ADD TO CART</button>";
+        echo  "       <button class='btn details px-auto' style='background-color: #42465A; color: white;'>ver detalles</button><br />";
+        echo  "        <button class='btn cart px-auto' data-id='$cart_id'>AGREGAR EN EL CARRITO</button>";
         echo  "     </div>";
         echo  "  </div>";
         echo "  </div>";
